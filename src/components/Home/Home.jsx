@@ -24,16 +24,15 @@ class Home extends Component {
     };
 
 
-    // NO MUESTRA LA IMAGEN DE LA PELICULA
     muestraResultados() {
-        if(this.state.topRatedFilms[0]) {
+        if (this.state.topRatedFilms[0]) {
             return (
                 this.state.topRatedFilms.map(film => {
                     return (
-                        <div className="film" key={ film.id }>
+                        <div className="film" key={film.id}>
                             {film.title}
-                            {film.vote_average} 
-                            <img alt={film.title} src={film.poster_path}></img>
+                            <img onClick={() => this.clickElementoSeleccionado(film)}  alt={film.title} src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}></img>
+                            {film.vote_average}
 
                         </div>
                     )
@@ -47,10 +46,16 @@ class Home extends Component {
     };
 
 
+    clickElementoSeleccionado(film){
+        
+        this.props.history.push('/Filmdetail');
+        localStorage.setItem('datosPelicula', JSON.stringify(film));
+    }
+
     render() {
         return (
             <Fragment>
-                { this.muestraResultados() }
+                { this.muestraResultados()}
             </Fragment>
         )
     };
