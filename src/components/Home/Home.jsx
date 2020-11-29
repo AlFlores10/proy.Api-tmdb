@@ -24,6 +24,8 @@ class Home extends Component {
     };
 
 
+    
+
     muestraResultados() {
         if (this.state.topRatedFilms[0]) {
             return (
@@ -48,9 +50,9 @@ class Home extends Component {
 
     clickElementoSeleccionado(film){
         
-        this.props.history.push('/Filmdetail');
+        this.props.history.push('/FilmDetails');
         localStorage.setItem('datosPelicula', JSON.stringify(film));
-    }
+    };
 
     render() {
         return (
