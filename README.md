@@ -18,8 +18,8 @@ Buscador de películas creado con React y CSS3.
 ***
 Lista de tecnologías utilizadas en el proyecto:
 * [React](https://html.spec.whatwg.org/multipage/): Version 16
-* [JavaScript](https://html.spec.whatwg.org/multipage/): Version 6 
-* [CSS3](https://developer.mozilla.org/en-US/docs/Archive/CSS3): Version 3
+* [JavaScript](https://html.spec.whatwg.org/multipage/): ES6 
+* [CSS3](https://developer.mozilla.org/en-US/docs/Archive/CSS3): 
 
 ## Installation
 ***
@@ -31,4 +31,5 @@ Lista de tecnologías utilizadas en el proyecto:
 ## Repositories
 ***
 > * [Repositorio GitHub](https://github.com/AlFlores10/proy.Api-tmdb)
+> * [Heroku](https://proy-tmdb.herokuapp.com/)
 > * [Alberto Flores Martínez](https://github.com/AlFlores10)
