@@ -1,0 +1,42 @@
+.container-film-details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 100vh;
+}
+
+img {
+    max-width: 50%;
+}
+
+.film-details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(121, 32, 32);
+    /* background-color: rgb(121, 32, 32); */
+}
+.title{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0.5rem;
+}
+.date{
+    font-weight: bold;
+    margin: 0.5rem;
+}
+.overview{
+    font-size: 1rem;
+    margin: 0.5rem;
+
+}
+.vote{
+    font-weight: bold;
+    margin: 0.5rem;
+}

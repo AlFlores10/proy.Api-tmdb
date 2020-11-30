@@ -1,4 +1,23 @@
-.film {
+.container-home{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+   
+}
+.container-film{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    height: 100%;
+    background-color: rgb(121, 32, 32);
+
+}
+
+.img-film {
+    cursor: pointer;
 }
