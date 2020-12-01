@@ -19,15 +19,25 @@ class Home extends Component {
     };
 
 
-    async getFilmsServices (page) {
+    async getFilmsServices(page) {
         try {
-            const peticionFilms = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKeyUser}&language=es-ES&page=${this.state.page}`);
+            const peticionFilms = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKeyUser}&language=es-ES&page=` + page);
             this.setState({ topRatedFilms: peticionFilms.data.results });
             console.log(this.state.topRatedFilms);
 
         } catch (error) {
             console.log(error);
         }
+    };
+
+
+    addFilmsServices = (page) => {
+        axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKeyUser}&language=es-ES&page=` + page)
+            .then(api => {
+                console.log(api.data.results)
+                this.setState(prevState => ({ topRatedFilms: prevState.topRatedFilms.concat(api.data.results) }))
+            })
+            .catch(err => console.log(err));
     };
 
 
@@ -73,12 +83,21 @@ class Home extends Component {
         })
     };
 
+
+    onViewMore = () => {
+        this.setState(prevState => ({ page: prevState.page + 1 }), () => {
+            this.addFilmsServices(this.state.page);
+            console.log(this.state.page)
+        });
+    };
+
     render() {
         return (
             <Fragment className="container-home" >
                 <div>{this.muestraResultados()}</div>
                 <button onClick={() => this.atrasPagina()}>ATRAS</button>
                 <button onClick={() => this.adelantePagina()}>SIGUIENTE</button>
+                <button onClick={() => this.onViewMore()}> Ver Más </button>
             </Fragment>
         )
     };
