@@ -47,7 +47,7 @@ class Home extends Component {
     };
 
 
-    clickElementoSeleccionado(film) {
+    clickElementoSeleccionado = (film) => {
 
         this.props.history.push('/film');
         localStorage.setItem('datosPelicula', JSON.stringify(film));
