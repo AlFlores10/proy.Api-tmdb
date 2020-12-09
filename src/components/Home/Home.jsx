@@ -117,6 +117,7 @@ class Home extends Component {
                     <button onClick={() => this.adelantePagina()}>SIGUIENTE</button>
                     <button onClick={() => this.onViewMore()}> Ver Más </button>
                     <input type="text" onChange={event => this.onHandleChange(event)} placeholder="Search..." />
+                    
                 </div>
                 <div>{this.muestraResultados()}</div>
                 <div className="grid">
