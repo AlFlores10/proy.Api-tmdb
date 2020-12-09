@@ -44,7 +44,7 @@ class FilmDetails extends Component {
 
     render() {
         return (
-            <div className="container-film-details">
+            <div className="container-film-details" key={this.state.filmEscogido.title}>
                 {this.mostrarDatos()}
                 <button onClick={() => this.btnAtras()}> VOLVER A PAGINA PRINCIPAL</button>
             </div>

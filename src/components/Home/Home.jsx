@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import './Home.css';
+import FilmSearch from '../FilmSearch/FilmSearch';
+import '../FilmSearch/FilmSearch.css';
 import axios from 'axios';
 const apiKeyUser = 'b5138e06a3a9125b8c326498bbeae997';
+
 
 class Home extends Component {
     constructor(props) {
@@ -9,7 +12,9 @@ class Home extends Component {
 
         this.state = {
             topRatedFilms: [],
-            page: 1
+            page: 1,
+            text: '',
+            search: []
         }
     };
 
@@ -46,12 +51,13 @@ class Home extends Component {
             return (
                 this.state.topRatedFilms.map(film => {
                     return (
-                        <div className="container-film" key={film.id}>
-                            {film.title}
-                            <img className="img-film" onClick={() => this.clickElementoSeleccionado(film)} alt={film.title} src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}></img>
-                            {/* {film.vote_average} */}
-
-                        </div>
+                        <Fragment>
+                            <div className="container-film" key={film.id}>
+                                {film.title}
+                                <img className="img-film" onClick={() => this.clickElementoSeleccionado(film)} alt={film.title} src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}></img>
+                                {/* {film.vote_average} */}
+                            </div>
+                        </Fragment>
                     )
                 })
             )
@@ -91,14 +97,37 @@ class Home extends Component {
         });
     };
 
+
+    onHandleChange = (event) => {
+        this.setState({ text: event.target.value }, () => {
+            const data = this.state.topRatedFilms
+                .filter(item => item.title.toLowerCase().includes(this.state.text.toLowerCase()));
+
+            this.setState({ search: data });
+
+        });
+
+    }
+
     render() {
         return (
-            <Fragment className="container-home" >
+            <Fragment>
+                <div className="container-home">
+                    <button onClick={() => this.atrasPagina()}>ATRAS</button>
+                    <button onClick={() => this.adelantePagina()}>SIGUIENTE</button>
+                    <button onClick={() => this.onViewMore()}> Ver Más </button>
+                    <input type="text" onChange={event => this.onHandleChange(event)} placeholder="Search..." />
+                </div>
                 <div>{this.muestraResultados()}</div>
-                <button onClick={() => this.atrasPagina()}>ATRAS</button>
-                <button onClick={() => this.adelantePagina()}>SIGUIENTE</button>
-                <button onClick={() => this.onViewMore()}> Ver Más </button>
+                <div className="grid">
+                    {
+                        this.state.search.length === 0 && this.state.text === ''
+                            ? this.state.topRatedFilms.map( item => <FilmSearch item={item} /> )
+                            : this.state.search.map( item => <FilmSearch item={item} />  )
+                    }
+                </div>
             </Fragment>
+
         )
     };
 };
