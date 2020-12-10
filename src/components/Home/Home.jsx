@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './Home.css';
 import FilmSearch from '../FilmSearch/FilmSearch';
 import '../FilmSearch/FilmSearch.css';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 const apiKeyUser = 'b5138e06a3a9125b8c326498bbeae997';
 
@@ -116,8 +117,12 @@ class Home extends Component {
                     <button onClick={() => this.atrasPagina()}>ATRAS</button>
                     <button onClick={() => this.adelantePagina()}>SIGUIENTE</button>
                     <button onClick={() => this.onViewMore()}> Ver Más </button>
-                    <input type="text" onChange={event => this.onHandleChange(event)} placeholder="Search..." />
-                    
+                    <input type="text" onChange={event => this.onHandleChange(event)} placeholder="Search..." />     
+                </div>
+                <div>
+                    <Link className="link" to="/register">
+                        REGISTRATE
+                    </Link>
                 </div>
                 <div>{this.muestraResultados()}</div>
                 <div className="grid">

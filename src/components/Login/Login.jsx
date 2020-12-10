@@ -1,5 +1,6 @@
 import axios from 'axios';
 import './Login.css';
+import jwt from 'jwt-decode';
 
 import React, { Component, useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -12,10 +13,12 @@ const Login = (props) => {
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
-            const res = await axios.post('http://localhost:3001/users/login', { name, password })
-            localStorage.setItem('token', res.data.token)
+            const res = await axios.post('https://proy-videoclub-api.herokuapp.com/login', { name, password })
+            localStorage.setItem('token', res.data.sucess);
+            console.log(jwt(res.data.sucess));
+            console.log(res);
+            console.log(res.data);
             alert("Login OK")
-            props.setUser(res.data.user)
             history.push('/')
         } catch (error) {
             console.error(error)
