@@ -1,0 +1,24 @@
+form.register {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 70vh;
+    align-items: center;
+}
+
+.register input {
+    all: unset;
+    padding: 1em;
+    width: fit-content;
+    border-radius: 0.5em;
+    background-color: rgb(121, 32, 32);
+}
+
+.register button {
+    all: unset;
+    cursor: pointer;
+    border-radius: 0.5em;
+    padding: 1em;
+    background-color: rgb(121, 32, 32);
+}
